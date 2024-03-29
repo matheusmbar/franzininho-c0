@@ -1,0 +1,6 @@
+{
+    "cpputestTestAdapter.testExecutable": "${workspaceFolder}/build/test/run_tests",
+    "cpputestTestAdapter.testExecutablePath": "${workspaceFolder}/build/test",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+}

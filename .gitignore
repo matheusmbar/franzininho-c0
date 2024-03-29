@@ -54,8 +54,11 @@ release
 
 #vscode
 .vs
-.vscode
+#.vscode
 vcpkg-configuration.json
 CMakePresets.json
-CMakeLists.txt
+#CMakeLists.txt
+
+# Build folders
+*/build
 cmake/
