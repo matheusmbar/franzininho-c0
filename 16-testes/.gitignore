@@ -1,0 +1,5 @@
+build*/
+thirdy-party/
+
+# Clangd and other caches
+.cache
