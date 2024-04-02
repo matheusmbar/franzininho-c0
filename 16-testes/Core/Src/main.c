@@ -26,6 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "device/gpio_pin.h"
 
 /* USER CODE END Includes */
 
@@ -91,16 +92,20 @@ int main(void) {
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
+  const Gpio gpio_1 = {LED1_GPIO_Port, LED1_Pin};
+  const Gpio gpio_2 = {LED2_GPIO_Port, LED2_Pin};
+
+  GpioSetHigh(&gpio_1);
+  GpioSetLow(&gpio_2);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
     /* USER CODE END WHILE */
-    HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+    GpioToggle(&gpio_1);
+    GpioToggle(&gpio_2);
     HAL_Delay(500);
 
     /* USER CODE BEGIN 3 */
