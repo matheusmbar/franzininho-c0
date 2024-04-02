@@ -11,6 +11,9 @@ set(CMAKE_C_FLAGS -m32)
 set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_FLAGS -m32)
 
+# Perform compiler test with static library
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
 set(PROJECT_NAME example_test)
 project(${PROJECT_NAME} LANGUAGES C CXX)
 

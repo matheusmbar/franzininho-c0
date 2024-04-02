@@ -1,0 +1,26 @@
+name: Exemplo 16 - Testes
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install GCC multilib for 32bits build
+      shell: bash
+      run:  |
+            sudo apt update
+            sudo apt install gcc-multilib g++-multilib
+
+    - name: Configure, build tests
+      working-directory: ./16-testes
+      run: |
+        cmake -B build .
+        cmake --build build
+
+    - name: Run tests
+      working-directory: ./16-testes
+      run: ./build/Test/run_tests -v -c
