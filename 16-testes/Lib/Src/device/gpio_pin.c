@@ -18,6 +18,13 @@ void GpioSetLow(const Gpio *gpio) {
   HAL_GPIO_WritePin(gpio->port, gpio->pin, GPIO_PIN_RESET);
 }
 
+void GpioToggle(const Gpio *gpio) {
+  if (!gpio || !(gpio->port)) {
+    return;
+  }
+  HAL_GPIO_TogglePin(gpio->port, gpio->pin);
+}
+
 GpioLevel GpioGetLevel(const Gpio *gpio) {
   if (!gpio || !(gpio->port)) {
     return kGpioLevelUnknown;

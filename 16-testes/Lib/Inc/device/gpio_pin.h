@@ -13,6 +13,7 @@ typedef struct {
 
 void GpioSetHigh(const Gpio *gpio);
 void GpioSetLow(const Gpio *gpio);
+void GpioToggle(const Gpio *gpio);
 GpioLevel GpioGetLevel(const Gpio *gpio);
 
 #endif  // LIB_DEVICE_GPIO_PIN_H_

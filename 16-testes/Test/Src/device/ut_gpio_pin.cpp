@@ -56,6 +56,22 @@ TEST(GPIO, SetLowInvalidArg) {
   GpioSetLow(&gpio_invalid);
 }
 
+TEST(GPIO, Toggle) {
+  mock_c()
+      ->expectOneCall("HAL_GPIO_TogglePin")
+      ->withConstPointerParameters("GPIO_TypeDef", gpio_1.port)
+      ->withUnsignedIntParameters("GPIO_Pin", gpio_1.pin);
+
+  GpioToggle(&gpio_1);
+}
+
+TEST(GPIO, ToggleInvalidArg) {
+  mock_c()->expectNoCall("HAL_GPIO_TogglePin");
+
+  GpioToggle(NULL);
+  GpioToggle(&gpio_invalid);
+}
+
 TEST(GPIO, GetLevel) {
   mock_c()
       ->expectOneCall("HAL_GPIO_ReadPin")

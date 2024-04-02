@@ -1,4 +1,3 @@
-
 #include "CppUTestExt/MockSupport_c.h"
 #include "stm32c0xx_hal.h"
 #include "stm32c0xx_hal_gpio.h"
@@ -18,4 +17,10 @@ void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState Pin
       ->withUnsignedIntParameters("GPIO_Pin", GPIO_Pin)
       ->withUnsignedIntParameters("PinState", PinState);
 }
-void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {}
+
+void HAL_GPIO_TogglePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin) {
+  mock_c()
+      ->actualCall("HAL_GPIO_TogglePin")
+      ->withConstPointerParameters("GPIO_TypeDef", GPIOx)
+      ->withUnsignedIntParameters("GPIO_Pin", GPIO_Pin);
+}
